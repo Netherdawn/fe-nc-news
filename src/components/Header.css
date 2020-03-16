@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  position: fixed;
+  width: 100vw;
+  background: #394f5a;
+}
+
+.header-button {
+  background: #394f5a;
+  border-color: #394f5a;
+  border-style: solid;
+}
+
+.header-button:hover {
+  color: maroon;
+}
+
+span {
+  display: inline-flex;
+}
+
+.searchbar {
+  margin: auto;
+}
+
+.searchbutton {
+  background: #394f5a;
+  border-color: #232f36;
+}
+
+.white-text {
+  color: #fffcd9;
+}
+
+.red-text {
+  color: #d0021b;
+}

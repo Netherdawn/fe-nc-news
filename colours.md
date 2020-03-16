@@ -6,6 +6,7 @@ White to dark
 #cddbe2 - silver grey
 #7695a5 - grey
 #394f5a - dark grey
+#232f36 - darker grey
 
 Reds
 #e92e4b - maroon
