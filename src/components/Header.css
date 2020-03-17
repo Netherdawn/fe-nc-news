@@ -2,7 +2,6 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-  position: fixed;
   width: 100vw;
   background: #394f5a;
 }
@@ -11,6 +10,7 @@
   background: #394f5a;
   border-color: #394f5a;
   border-style: solid;
+  transition: color 1s ease;
 }
 
 .header-button:hover {

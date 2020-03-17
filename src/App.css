@@ -1,3 +1,81 @@
 .App {
   /* text-align: center; */
 }
+
+.topic-container {
+  display: grid;
+  grid-template: 1fr 1fr / 3fr 1fr;
+  grid-template-areas:
+    "topic-title          topic-title"
+    "topic-description    articles-by-topic-button";
+  background: #f2f6f8;
+  border: 5px solid #f2f6f8;
+  border-radius: 10px;
+  width: 70vw;
+  margin: 10px 0px 10px 0px;
+}
+
+.topic-title {
+  grid-area: topic-title;
+  margin: 0px;
+}
+.topic-description {
+  grid-area: topic-description;
+  margin: 0px;
+}
+
+.articles-by-topic-button {
+  display: grid;
+  grid-template: 1fr / 3fr 1fr;
+  grid-area: articles-by-topic-button;
+  background: #ba1f31 !important;
+  border: 5px solid #ba1f31 !important;
+  border-radius: 5px;
+  color: #fffcd9;
+  width: 80px;
+  height: 24px;
+  animation-name: colour-fade;
+  animation-duration: 1s;
+  animation-play-state: paused;
+  z-index: 0;
+}
+
+.articles-by-topic-button-element {
+  transition: background-color 1s ease;
+  border-style: solid;
+  border-right: 5px;
+  border-top: 5px;
+  border-bottom: 5px;
+  border-color: #ba1f31;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  z-index: 1;
+}
+
+p {
+  display: inline;
+  margin: 0;
+}
+
+.articles-by-topic-button:hover {
+  animation-play-state: running;
+}
+.articles-by-topic-button:hover .articles-by-topic-button-element {
+  background-color: maroon;
+  border-color: maroon;
+  margin-left: 10px;
+  height: 24px;
+}
+
+@keyframes colour-fade {
+  from {
+    background-color: #ba1f31;
+
+    border-color: #ba1f31;
+  }
+  to {
+    background-color: maroon;
+
+    border-color: maroon;
+  }
+}

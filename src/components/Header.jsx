@@ -1,5 +1,6 @@
 import React from "react";
 import "./Header.css";
+import { Link } from "@reach/router";
 
 class Header extends React.Component {
   render() {
@@ -24,8 +25,8 @@ class Header extends React.Component {
           </button>
         </form> */}
         <span>
-          <button className="header-button red-text">topics</button>
-          <button className="header-button red-text">articles</button>
+          <button className="header-button white-text">topics</button>
+          <button className="header-button white-text">articles</button>
         </span>
       </div>
     );
