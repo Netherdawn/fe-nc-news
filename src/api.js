@@ -8,6 +8,26 @@ export const fetchTopics = () => {
   return instance.get("/topics");
 };
 
-export const fetchArticles = params => {
-  return instance.get("/articles", { params: params });
+export const fetchArticles = async params => {
+  return await instance.get("/articles", { params: params });
+};
+
+export const fetchArticleById = id => {
+  return instance.get(`/articles/${id}`);
+};
+
+export const fetchUserByUsername = username => {
+  return instance.get(`/users/${username}`);
+};
+
+export const fetchCommentsByArticleId = async id => {
+  return await instance.get(`/articles/${id}/comments`);
+};
+
+export const patchCommentVoteById = async (id, value) => {
+  return await instance.patch(`/comments/${id}`, { inc_votes: value });
+};
+
+export const patchArticleVoteById = async (id, value) => {
+  return await instance.patch(`/articles/${id}`, { inc_votes: value });
 };

@@ -14,10 +14,10 @@ class Toggle extends React.Component {
   render() {
     return (
       <>
-        <button onClick={this.swapToggle}>Post</button>
-        {this.state.toggle === false
-          ? this.props.children[0]
-          : this.props.children[1]}
+        {this.state.toggle === true ? this.props.children[1] : null}
+        <button className="button" onClick={this.swapToggle}>
+          {this.props.children[0]}
+        </button>
       </>
     );
   }

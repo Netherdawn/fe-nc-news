@@ -1,3 +1,8 @@
+.header-grid {
+  display: grid;
+  grid-template: 80px 26px / 100vw;
+}
+
 .header {
   display: flex;
   flex-wrap: nowrap;
@@ -9,8 +14,10 @@
 .header-button {
   background: #394f5a;
   border-color: #394f5a;
+  text-decoration: none;
   border-style: solid;
   transition: color 1s ease;
+  margin: auto;
 }
 
 .header-button:hover {
@@ -36,4 +43,15 @@ span {
 
 .red-text {
   color: #d0021b;
+}
+
+.log-button {
+  min-width: 38px;
+}
+
+.username-banner {
+  background: #ba1f31;
+  text-align: center;
+  color: #fffcd9;
+  margin: 0px;
 }

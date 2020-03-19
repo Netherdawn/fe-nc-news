@@ -24,12 +24,8 @@ class Topics extends React.Component {
             <div key={topic.slug} className="topic-container">
               <h2 className="topic-title">{topic.slug}</h2>
               <p className="topic-description">{topic.description}</p>
-              <Link
-                to={`/articles/topic/${topic.slug}`}
-                className="articles-by-topic-button"
-              >
-                <p>{"<Articles "}</p>
-                <p className="articles-by-topic-button-element">{"/>"}</p>
+              <Link to={`/articles/topic/${topic.slug}`} className="button">
+                <p>{"<Articles />"}</p>
               </Link>
             </div>
           );

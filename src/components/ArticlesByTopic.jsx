@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "@reach/router";
 import * as api from "../api";
 import Loading from "./Loading";
+import ArticleListee from "./ArticleListee";
 
 class ArticlesByTopic extends React.Component {
   state = {
@@ -25,18 +26,7 @@ class ArticlesByTopic extends React.Component {
     ) : (
       <ul>
         {this.state.articles.map(article => {
-          return (
-            <div key={article.slug} className="topic-container">
-              <h2 className="topic-title">{article.title}</h2>
-              <p className="topic-description">
-                {article.body.substring(0, 150) + "..."}
-              </p>
-              <Link to={`/articles`} className="articles-by-topic-button">
-                <p>{"<Articles "}</p>
-                <p className="articles-by-topic-button-element">{"/>"}</p>
-              </Link>
-            </div>
-          );
+          return <ArticleListee article={article} />;
         })}
       </ul>
     );
