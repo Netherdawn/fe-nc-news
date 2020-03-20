@@ -1,6 +1,10 @@
 .comment-container {
   display: grid;
-  grid-template: 28px 1fr 28px/ 1fr;
+  grid-template: 28px 1fr 28px/ 90% 10%;
+  grid-template-areas:
+    "comment-title          comment-delete"
+    "comment-body           comment-body"
+    "comment-end            comment-end";
   background: #f2f6f8;
   border: 5px solid #f2f6f8;
   border-radius: 10px;
@@ -8,12 +12,29 @@
   margin: 10px auto 10px auto;
 }
 
+.comment-title {
+  grid-area: comment-title;
+}
+
+.comment-delete {
+  grid-area: comment-delete;
+  margin: 0px;
+}
+
 .comment-body {
+  grid-area: comment-body;
   border-top: 2px solid #b5d2e1;
   border-bottom: 2px solid #b5d2e1;
 }
 
 .comment-end {
+  grid-area: comment-end;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.comment-end-button {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;

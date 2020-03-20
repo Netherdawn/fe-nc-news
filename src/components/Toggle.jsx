@@ -16,7 +16,11 @@ class Toggle extends React.Component {
       <>
         {this.state.toggle === true ? this.props.children[1] : null}
         <button className="button" onClick={this.swapToggle}>
-          {this.props.children[0]}
+          {this.state.toggle === true ? (
+            <p>{"<close />"}</p>
+          ) : (
+            this.props.children[0]
+          )}
         </button>
       </>
     );

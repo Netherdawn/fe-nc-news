@@ -4,6 +4,7 @@ import * as api from "../api";
 import Loading from "./Loading";
 import Voter from "./Voter";
 import Toggle from "./Toggle";
+import Post from "./Post";
 
 class Comments extends React.Component {
   state = {
@@ -14,6 +15,23 @@ class Comments extends React.Component {
     comment.votes += value;
     this.forceUpdate();
     api.patchCommentVoteById(comment.comment_id, value).then(() => {
+      this.setState({ needUpdating: true });
+    });
+  };
+  addComment = body => {
+    api
+      .postCommentByArticleId(this.props.id, {
+        body: body,
+        username: this.props.username
+      })
+      .then(comment => {
+        this.setState(currentState => {
+          return { comments: [comment, ...currentState.comments] };
+        });
+      });
+  };
+  deleteComment = id => {
+    api.deleteCommentByCommentId(id).then(() => {
       this.setState({ needUpdating: true });
     });
   };
@@ -32,17 +50,39 @@ class Comments extends React.Component {
   }
 
   render() {
-    const { count, comments } = this.state;
+    const { comments } = this.state;
+    const { id, username } = this.props;
     return this.state.comments === null ? (
       <Loading />
     ) : (
       <>
+        {this.props.username === null ? (
+          <Toggle>
+            <p>{"<post />"}</p>
+            <p>please log in</p>
+          </Toggle>
+        ) : (
+          <Toggle>
+            <p>{"<post />"}</p>
+            <Post post={this.addComment} />
+          </Toggle>
+        )}
         <ul>
           {comments.map(comment => {
             return (
               <React.Fragment key={comment.comment_id}>
                 <div className="comment-container">
-                  <h3>{comment.author}</h3>
+                  <h3 className="comment-title">{comment.author}</h3>
+                  {comment.author === username ? (
+                    <button
+                      className="comment-delete button"
+                      onClick={() => {
+                        this.deleteComment(comment.comment_id);
+                      }}
+                    >
+                      {"<delete />"}
+                    </button>
+                  ) : null}
                   <p className="comment-body">{comment.body}</p>
                   <span className="comment-end">
                     <p>
@@ -53,7 +93,7 @@ class Comments extends React.Component {
                     <p>votes:{comment.votes}</p>
                   </span>
                 </div>
-                <span className="comment-end">
+                <span className="comment-end-button">
                   <Voter changeVote={this.changeVote} value={1} item={comment}>
                     <p>{"<upvote />"}</p>
                   </Voter>
@@ -65,17 +105,6 @@ class Comments extends React.Component {
             );
           })}
         </ul>
-        {this.props.username === null ? (
-          <Toggle>
-            <p>{"<post />"}</p>
-            <p>please log in</p>
-          </Toggle>
-        ) : (
-          <Toggle>
-            <p>{"<post />"}</p>
-            <p>please log in</p>
-          </Toggle>
-        )}
       </>
     );
   }
