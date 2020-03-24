@@ -6,6 +6,7 @@ import Articles from "./components/Articles";
 import Article from "./components/Article";
 import { Router } from "@reach/router";
 import ArticlesByTopic from "./components/ArticlesByTopic";
+import Error from "./components/Error";
 
 class App extends React.Component {
   state = {
@@ -36,6 +37,7 @@ class App extends React.Component {
             username={this.state.username}
             path="/articles/:article_id"
           />
+          <Error path="/*" />
         </Router>
       </div>
     );
